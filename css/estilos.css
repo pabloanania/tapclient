@@ -106,3 +106,20 @@ body {
 .contenedor-form .formulario:nth-child(2) {
     display: block;
 }
+    #boton_logout {
+        position:absolute;
+	    right: 40px; 
+	    top: 5px;
+	    width: 50px; 
+	    height: 50px; 
+        left: 89%;
+}
+ 
+    #lista_users {
+	    position:relative;
+		top: -250px; 
+	    height: 10px; 
+        left: 110%;
+		padding: 20px;
+} 
+ 
