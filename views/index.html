@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="ChatApp">
 <head>
     <meta charset="UTF-8">
     <title> Chat Online </title>
@@ -41,22 +41,32 @@
             </form>
 		 <div class="lista" id="lista_users">	
 	     	<h2>Usuarios</h2>
+            <!-- VIEJO TEMPLATE ESTATICO
             <div class="text_item_list">
                 <div class="text_item">Usuario 1</div>
                 <div class="text_item grayed">Usuario 2</div>
             </div>
+            -->
+            <user-list></user-list>
          </div>
 		 <div class="listamsj" id="lista_msj">	
-	     	<h2>Mensajes no leídos</h2>
-			<div class="text_item_list">
+            <h2>Mensajes no leídos</h2>
+            <!-- VIEJO TEMPLATE ESTATICO 
+            <div class="text_item_list">
                 <div class="text_item">Mensaje 1</div>
                 <div class="text_item">Mensaje 2</div>
             </div>
+            -->
+            <message-list></message-list>
          </div>
         </div>
-    <script src="../js/jquery-3.1.1.min.js"></script>    
+    <script src="../js/lib/jquery/jquery-3.1.1.min.js"></script>
+    <script src="../js/lib/angular/angular.js"></script>
+    <script src="../js/parameters.js"></script>
     <script src="../js/main.js"></script>
     <script src="../js/services.js"></script>
     <script src="../js/chat.js"></script>
+    <script src="../js/angularApp.js"></script>
+    <script src="../js/chat-view.component.js"></script>
 </body>
 </html>
