@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title> Chat Online </title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="../css/estilos.css">
 </head>
 <body>
     <div class="contenedor-form">
@@ -31,30 +31,32 @@
         </div>
 
         <div class="formulario" id="chat_room">
-            <h2>Escriba el mensaje en el cuadro:</h2>
+            <h2>Mensaje</h2>
             <form>
-			    <textarea name="mensajes" rows=6 cols=57> </textarea>
-                <!-- <input type="text" placeholder="falta!!!" required> <!-- -->
+			    <textarea id="input_chat" rows=6> </textarea>
 			</form>
 			<form class="form-send" role="form">
             <input type="submit" value="Enviar" id="send" />
 			<input type="submit" value="Salir"  id="boton_logout" />
             </form>
 		 <div class="lista" id="lista_users">	
-	     	<h2>Usuarios:</h2>
-			<form>
-			    <input type="text" placeholder="Usuarios" required> 
-			    <!--<textarea name="mensajes" rows=4 cols=40> </textarea> <!-- -->
-			</form>
+	     	<h2>Usuarios</h2>
+            <div class="text_item_list">
+                <div class="text_item">Usuario 1</div>
+                <div class="text_item grayed">Usuario 2</div>
+            </div>
          </div>
 		 <div class="listamsj" id="lista_msj">	
-	     	<h2>Lista de Mensajes:</h2>
-			<form>
-			    <input type="text" placeholder="Mensaje1" required> 
-			</form>
+	     	<h2>Mensajes no leídos</h2>
+			<div class="text_item_list">
+                <div class="text_item">Mensaje 1</div>
+                <div class="text_item">Mensaje 2</div>
+            </div>
          </div>
         </div>
-    <script src="js/jquery-3.1.1.min.js"></script>    
-    <script src="js/main.js"></script>
+    <script src="../js/jquery-3.1.1.min.js"></script>    
+    <script src="../js/main.js"></script>
+    <script src="../js/services.js"></script>
+    <script src="../js/chat.js"></script>
 </body>
 </html>
