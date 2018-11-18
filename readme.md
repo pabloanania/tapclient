@@ -1,10 +1,9 @@
 # TO DO:
-* Envio de mensajes
-* Logout
 * Testing
 * Los usuarios deberian mostrar el nombre en la lista de mensajes
     * Usar una entityCache?
     * Usar una especie de observer y setear un atributo en el HTML tag para que busque si está el usuario con id y lo reemplaza por nombre?
+* Logout
 
 # TO DOCUMENT:
 * No va bootstrap

@@ -32,31 +32,19 @@
 
         <div class="formulario" id="chat_room">
             <h2>Mensaje</h2>
-            <form>
+            <form class="form-send" role="form" onsubmit="submitMessage()">
 			    <textarea id="input_chat" rows=6> </textarea>
-			</form>
-			<form class="form-send" role="form">
-            <input type="submit" value="Enviar" id="send" />
-			<input type="submit" value="Salir"  id="boton_logout" />
+                <input type="submit" value="Enviar" id="send" />
             </form>
+            <input type="submit" value="Salir"  id="boton_logout" />
 		 <div class="lista" id="lista_users">	
 	     	<h2>Usuarios</h2>
-            <!-- VIEJO TEMPLATE ESTATICO
-            <div class="text_item_list">
-                <div class="text_item">Usuario 1</div>
-                <div class="text_item grayed">Usuario 2</div>
-            </div>
-            -->
+
             <user-list></user-list>
          </div>
 		 <div class="listamsj" id="lista_msj">	
             <h2>Mensajes no leídos</h2>
-            <!-- VIEJO TEMPLATE ESTATICO 
-            <div class="text_item_list">
-                <div class="text_item">Mensaje 1</div>
-                <div class="text_item">Mensaje 2</div>
-            </div>
-            -->
+
             <message-list></message-list>
          </div>
         </div>

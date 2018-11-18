@@ -25,24 +25,21 @@ angular.module('ChatApp').controller('MessageListController', function($scope, $
             alert("FAILED");
         });
     }
-
-    // Fuerza el primer refresco
-    //$scope.refresh();
-});
-
-angular.module('ChatApp').component('userList', {
-    template:
-        '<div class="text_item_list" ng-controller="UserListController" >' + 
-            '<div ng-repeat="(key, val) in usrs">' +
-                '<div class="text_item"><input class="user_check" type="checkbox" user_id="{{key}}">{{val}}</div>' + 
-            '</div>' + 
-            '<input type="submit" id="user_list_refresh" ng-click="refresh()" value="Actualizar">' + 
-        '</div>'
 });
 
 /*
 *   MODULO LISTA DE USERS
 */
+angular.module('ChatApp').component('userList', {
+    template:
+        '<div class="text_item_list" ng-controller="UserListController" >' + 
+            '<div ng-repeat="(key, val) in usrs">' +
+                '<div class="text_item"><input class="user_check" type="checkbox" user_id="{{key}}" user_name="{{val}}">{{val}}</div>' + 
+            '</div>' + 
+            '<input type="submit" id="user_list_refresh" ng-click="refresh()" value="Actualizar">' + 
+        '</div>'
+});
+
 angular.module('ChatApp').controller('UserListController', function($scope, $http){
     $scope.refresh = function(){
         Services.Users.getAngular($http, function(res){

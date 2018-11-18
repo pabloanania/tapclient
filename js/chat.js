@@ -1,3 +1,4 @@
+// Cambia entre los paneles de la aplicación
 function screenToggler(selector){
     $(selector).animate({
         height: "toggle",
@@ -7,6 +8,7 @@ function screenToggler(selector){
     }, "slow");
 }
 
+// Disparado al enviar login
 function submitLogin(){
     var loginData = $('#login').serializeArray();
     var loginObj = {};
@@ -26,4 +28,23 @@ function submitLogin(){
     }, function(){
         alert("Credenciales incorrectas");
     });
+}
+
+// Disparado al enviar mensaje
+function submitMessage(){
+    var msgs = [];
+    var recipients = $(".user_check:checked");
+    var message = $('#input_chat')[0].value;
+
+    for (var i=0; i<recipients.length; i++){
+        msgs[i] = {};
+        msgs[i]["message"] = message;
+        msgs[i]["to"] = recipients[i].getAttribute("user_name");
+
+        Services.Messages.send(msgs[i], function(res){
+            alert("El mensaje se ha enviado exitosamente");
+        }, function(res){
+            alert("El envío de mensaje ha fallado a uno de los destinatarios");
+        });
+    }
 }

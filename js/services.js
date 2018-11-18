@@ -5,6 +5,14 @@ Services = {
                 Services.navToken = res.data.token;
                 thenSuccessCallback(res);
             }, thenFailCallback);
+        },
+
+        send: function(messageObj, successCallback, failCallback){
+            messageObj["token"] = Services.navToken;
+            Services.restCalls("POST", Parameters.apiURL + "/api/messages", function(res){
+                Services.navToken = res.token;
+                successCallback(res);
+            }, failCallback, messageObj);
         }
     },
 
