@@ -8,7 +8,7 @@ angular.module('ChatApp').component('messageList', {
             '<div ng-repeat="(key, val) in msgs">' +
                 '<div class="text_item">{{key}}:</br>{{val}}</div>' + 
             '</div>' + 
-            '<input type="submit" ng-click="refresh()" value="Actualizar">' + 
+            '<input type="submit" id="message_list_refresh"  ng-click="refresh()" value="Actualizar">' + 
         '</div>'
 });
   
@@ -34,9 +34,9 @@ angular.module('ChatApp').component('userList', {
     template:
         '<div class="text_item_list" ng-controller="UserListController" >' + 
             '<div ng-repeat="(key, val) in usrs">' +
-                '<div class="text_item" user_id="{{key}}">{{val}}</div>' + 
+                '<div class="text_item"><input class="user_check" type="checkbox" user_id="{{key}}">{{val}}</div>' + 
             '</div>' + 
-            '<input type="submit" ng-click="refresh()" value="Actualizar">' + 
+            '<input type="submit" id="user_list_refresh" ng-click="refresh()" value="Actualizar">' + 
         '</div>'
 });
 

@@ -1,7 +1,10 @@
 # TO DO:
-* Login
-* Guardar el token en cada response
 * Envio de mensajes
+* Logout
+* Testing
+* Los usuarios deberian mostrar el nombre en la lista de mensajes
+    * Usar una entityCache?
+    * Usar una especie de observer y setear un atributo en el HTML tag para que busque si está el usuario con id y lo reemplaza por nombre?
 
 # TO DOCUMENT:
 * No va bootstrap
@@ -10,6 +13,8 @@
     * Tiraba que no permitia origen 'null'
     * Obligo a pasar el proyecto a otro node.js
     * Hubo que poner capa mas en middleware que escribiera response headers con Access-Control-Allow-Origin adecuado
+    * También el Access-Control-Allow-Headers
+* Action en la form estaba dando resultados raros, haciendo que se recargue la página automáticamente e invocando failCallback
 
 # WISH LIST:
 * Registración
