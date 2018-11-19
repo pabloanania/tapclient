@@ -8,7 +8,7 @@
 </head>
 <body>
     <div class="contenedor-form">
-        <div class="toggle" onclick="(function(){screenToggler('#login_form');screenToggler('#signup_form');})()">
+        <div class="toggle" onclick="toggleUserCreateLoginPanel()">
             <span>Nueva Cuenta</span>
         </div>
         
@@ -23,10 +23,9 @@
         
         <div class="formulario" id="signup_form">
             <h2>Complete los campos:</h2>
-            <form action="#">
-                <input type="text" placeholder="Usuario" required>
-                <input type="password" placeholder="Contraseña" required>
-                <input type="email" placeholder="Correo Electronico" required>
+            <form id="create_user" onsubmit="submitCreateUser()">
+                <input type="text" name="username" placeholder="Usuario" required>
+                <input type="password" name="password" placeholder="Contraseña" required>
                 <input type="submit" value="Registrarse">
             </form>
         </div>

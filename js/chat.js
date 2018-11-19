@@ -60,9 +60,31 @@ function submitLogout(){
     toggleLoginFromChatPanel();
 }
 
+// Disparado al crear nuevo usuario
+function submitCreateUser(){
+    var userData = $('#create_user').serializeArray();
+    var userObj = {};
+
+    for (var i=0; i<userData.length; i++)
+        userObj[userData[i].name] = userData[i].value;
+
+    Services.Users.create(userObj, function(){
+        alert("Ha creado el usuario exitosamente");
+    }, function(res){
+        alert(res.responseJSON.error);
+    });
+    toggleUserCreateLoginPanel();
+}
+
 // Apaga la ventana de chat y enciende la de login
 function toggleLoginFromChatPanel(){
     screenToggler('#login_form');
     screenToggler('#chat_room');
     screenToggler('.toggle');
+}
+
+// Intercala entre las pantallas de login y creación de usuario
+function toggleUserCreateLoginPanel(){
+    screenToggler('#login_form');
+    screenToggler('#signup_form');
 }

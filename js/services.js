@@ -28,6 +28,14 @@ Services = {
             }, function(res){
                 thenFailCallback(res);
             });
+        },
+
+        create: function(userObj, successCallback, failCallback){
+            Services.restCalls("POST", Parameters.apiURL + "/api/users", function(res){
+                successCallback(res);
+            }, function(res){
+                failCallback(res);
+            }, userObj);
         }
     },
 

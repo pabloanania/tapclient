@@ -1,7 +1,5 @@
 # TO DO:
-* Mostrar el estado de los usuarios según logged in u out
-* Los usuarios deberian mostrar el nombre en la lista de mensajes
-    * Directamente va a buscar a los users cada vez que arma la lista de mensajes, sorry no time :_ (
+* Agarrar algun whish
 
 # TO DOCUMENT:
 * No va bootstrap
@@ -15,11 +13,11 @@
 * Se agregó api/logout y en login se setea variable logged
     * Cada vez que al usuario se le vence el token se desloguea
 * Object id string vs. object id objeto de mongodb
+* Quitar token al crear usuario desde la API
 
 # WISH LIST:
-* Registración
+* favicon
+* Instalar Swal para alertas
 * La lista de usuarios tiene una animacion rara
 * La lista de usuarios tendría que tener un background como el contenedor central
 * El botón de salir tendría que tener el mismo estilo que el del "Nueva cuenta"
-* Instalar Swal para alertas
-* favicon
