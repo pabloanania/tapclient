@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title> Chat Online </title>
     <link rel="stylesheet" href="../css/estilos.css">
+    <link rel="stylesheet" href="../node_modules/mocha/mocha.css">
 </head>
 <body>
     <div class="contenedor-form">
@@ -16,7 +17,7 @@
             <form id="login" onsubmit="submitLogin()">
                 <input type="text" name="username" placeholder="Usuario" required>
                 <input type="password" name="password" placeholder="Contraseña" required>
-                <input type="submit" value="Ingresar">
+                <input type="submit" id="login_send" value="Ingresar">
             </form>
         </div>
         
@@ -33,27 +34,46 @@
         <div class="formulario" id="chat_room">
             <h2>Mensaje</h2>
             <form class="form-send" role="form" onsubmit="submitMessage()">
-			    <textarea id="input_chat" rows=6> </textarea>
+			    <textarea id="input_chat" rows=6></textarea>
                 <input type="submit" value="Enviar" id="send" />
             </form>
             <input type="submit" value="Salir"  id="boton_logout" />
-		 <div class="lista" id="lista_users">	
-	     	<h2>Usuarios</h2>
 
-            <user-list></user-list>
-         </div>
-		 <div class="listamsj" id="lista_msj">	
-            <h2>Mensajes no leídos</h2>
+            <div class="lista" id="lista_users">	
+                <h2>Usuarios</h2>
 
-            <message-list></message-list>
-         </div>
+                <user-list></user-list>
+            </div>
+
+            <div class="listamsj" id="lista_msj">	
+                <h2>Mensajes no leídos</h2>
+
+                <message-list></message-list>
+            </div>
+
         </div>
+        <div id="mocha"></div>
+    </div>
+
+    <!-- LIBRERIAS -->
     <script src="../js/lib/jquery/jquery-3.1.1.min.js"></script>
     <script src="../js/lib/angular/angular.js"></script>
+    <script src="../node_modules/mocha/mocha.js"></script>
+    <script src="../node_modules/chai/chai.js"></script>
+
+    <!-- SCRIPTS CUSTOM -->
     <script src="../js/parameters.js"></script>
     <script src="../js/chat.js"></script>
     <script src="../js/services.js"></script>
     <script src="../js/angularApp.js"></script>
     <script src="../js/chat-view.component.js"></script>
+
+    <!-- INICIALIZA MOCHA + CHAI -->
+    <script>
+        mocha.ui('bdd'); 
+        mocha.reporter('html');
+        var expect = chai.expect;
+    </script>
+    <script src="../js/test/test.js"></script>
 </body>
 </html>

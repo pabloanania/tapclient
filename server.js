@@ -19,8 +19,13 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + "/views/index.html");
 });
 
+// get tests
+app.get('/test', (req, res) => {
+    res.sendFile(__dirname + "/views/test.html");
+});
+
 // devuelve archivos del servidor
-app.get(['/libs/*', '/css/*', '/ico/*', '/js/*' ,'/img/*'], (req, res) => {
+app.get(['/libs/*', '/css/*', '/ico/*', '/js/*' ,'/img/*' ,'/node_modules/*'], (req, res) => {
     res.sendFile(__dirname + req.originalUrl);
 });
 
