@@ -21,8 +21,9 @@ angular.module('ChatApp').controller('MessageListController', function($scope, $
             for (var i=0; i<received.length; i++){
                 $scope.msgs[received[i].from] = received[i].message;
             }
-        }, function(){
-            alert("FAILED");
+        }, function(res){
+            alert(res.data.error);
+            toggleLoginFromChatPanel();
         });
     }
 });
@@ -33,8 +34,11 @@ angular.module('ChatApp').controller('MessageListController', function($scope, $
 angular.module('ChatApp').component('userList', {
     template:
         '<div class="text_item_list" ng-controller="UserListController" >' + 
-            '<div ng-repeat="(key, val) in usrs">' +
+            '<div ng-repeat="(key, val) in usrsLoggedIn">' +
                 '<div class="text_item"><input class="user_check" type="checkbox" user_id="{{key}}" user_name="{{val}}">{{val}}</div>' + 
+            '</div>' + 
+            '<div ng-repeat="(key, val) in usrsLoggedOut">' +
+                '<div class="text_item grayed"><input class="user_check" type="checkbox" user_id="{{key}}" user_name="{{val}}">{{val}}</div>' + 
             '</div>' + 
             '<input type="submit" id="user_list_refresh" ng-click="refresh()" value="Actualizar">' + 
         '</div>'
@@ -43,14 +47,19 @@ angular.module('ChatApp').component('userList', {
 angular.module('ChatApp').controller('UserListController', function($scope, $http){
     $scope.refresh = function(){
         Services.Users.getAngular($http, function(res){
-            $scope.usrs = {};
+            $scope.usrsLoggedIn = {};
+            $scope.usrsLoggedOut = {};
             var users = res.data.users;
             
             for (var i=0; i<users.length; i++){
-                $scope.usrs[users[i]._id] = users[i].username;
+                if (users[i].logged)
+                    $scope.usrsLoggedIn[users[i]._id] = users[i].username;
+                else
+                    $scope.usrsLoggedOut[users[i]._id] = users[i].username;
             }
-        }, function(){
-            alert("FAILED");
+        }, function(res){
+            alert(res.data.error);
+            toggleLoginFromChatPanel();
         });
     }
 });

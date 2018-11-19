@@ -4,7 +4,9 @@ Services = {
             httpContext.get(Parameters.apiURL + '/api/messages?unread&token=' + Services.navToken).then(function(res){
                 Services.navToken = res.data.token;
                 thenSuccessCallback(res);
-            }, thenFailCallback);
+            }, function(res){
+                thenFailCallback(res);
+            });
         },
 
         send: function(messageObj, successCallback, failCallback){
@@ -12,7 +14,9 @@ Services = {
             Services.restCalls("POST", Parameters.apiURL + "/api/messages", function(res){
                 Services.navToken = res.token;
                 successCallback(res);
-            }, failCallback, messageObj);
+            }, function(res){
+                failCallback(res);
+            }, messageObj);
         }
     },
 
@@ -21,7 +25,9 @@ Services = {
             httpContext.get(Parameters.apiURL + '/api/users?token=' + Services.navToken).then(function(res){
                 Services.navToken = res.data.token;
                 thenSuccessCallback(res);
-            }, thenFailCallback);
+            }, function(res){
+                thenFailCallback(res);
+            });
         }
     },
 
@@ -31,6 +37,15 @@ Services = {
                 Services.navToken = res.token;
                 successCallback(res);
             }, failCallback, userDataObj);
+        },
+        logout: function(successCallback, failCallback){
+            Services.restCalls("POST", Parameters.apiURL + "/api/logout", function(res){
+                Services.navToken = "";
+                successCallback(res);
+            }, function(res){
+                Services.navToken = "";
+                failCallback(res);
+            }, {"token": Services.navToken});
         },
     },
 

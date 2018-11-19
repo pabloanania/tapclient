@@ -44,7 +44,25 @@ function submitMessage(){
         Services.Messages.send(msgs[i], function(res){
             alert("El mensaje se ha enviado exitosamente");
         }, function(res){
-            alert("El envío de mensaje ha fallado a uno de los destinatarios");
+            alert(res.responseJSON.error);
+            toggleLoginFromChatPanel();
         });
     }
+}
+
+// Disparado al presionar botón salir
+function submitLogout(){
+    Services.Login.logout(function(){
+        alert("Ha cerrado la sesión exitosamente");
+    }, function(res){
+        alert(res.responseJSON.error);
+    });
+    toggleLoginFromChatPanel();
+}
+
+// Apaga la ventana de chat y enciende la de login
+function toggleLoginFromChatPanel(){
+    screenToggler('#login_form');
+    screenToggler('#chat_room');
+    screenToggler('.toggle');
 }

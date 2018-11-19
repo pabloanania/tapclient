@@ -1,8 +1,7 @@
 # TO DO:
+* Mostrar el estado de los usuarios según logged in u out
 * Los usuarios deberian mostrar el nombre en la lista de mensajes
-    * Usar una entityCache?
-    * Usar una especie de observer y setear un atributo en el HTML tag para que busque si está el usuario con id y lo reemplaza por nombre?
-* Logout
+    * Directamente va a buscar a los users cada vez que arma la lista de mensajes, sorry no time :_ (
 
 # TO DOCUMENT:
 * No va bootstrap
@@ -13,6 +12,9 @@
     * También el Access-Control-Allow-Headers
 * Action en la form estaba dando resultados raros, haciendo que se recargue la página automáticamente e invocando failCallback
 * Mocha + Chai instalados en server, modificaciones en client. mocha.run() desde consola para correr
+* Se agregó api/logout y en login se setea variable logged
+    * Cada vez que al usuario se le vence el token se desloguea
+* Object id string vs. object id objeto de mongodb
 
 # WISH LIST:
 * Registración
