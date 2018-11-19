@@ -6,7 +6,7 @@ angular.module('ChatApp').component('messageList', {
     template:
         '<div class="text_item_list" ng-controller="MessageListController" >' + 
             '<div ng-repeat="(key, val) in msgs">' +
-                '<div class="text_item">{{key}}:</br>{{val}}</div>' + 
+                '<div class="text_item">{{val}}</div>' + 
             '</div>' + 
             '<input type="submit" id="message_list_refresh"  ng-click="refresh()" value="Actualizar">' + 
         '</div>'
@@ -15,12 +15,20 @@ angular.module('ChatApp').component('messageList', {
 angular.module('ChatApp').controller('MessageListController', function($scope, $http){
     $scope.refresh = function(){
         Services.Messages.getUnreadAngular($http, function(res){
-            $scope.msgs = {};
+            $scope.msgs = [];
             var received = res.data.messages;
             
-            for (var i=0; i<received.length; i++){
-                $scope.msgs[received[i].from] = received[i].message;
-            }
+            Services.Users.getAngular($http, function(resUsers){
+                var users = resUsers.data.users;
+
+                for (var i=0; i<received.length; i++){
+                    var from = users.find(function(element) {
+                        return element._id == received[i].from;
+                    });
+
+                    $scope.msgs.push(from.username + ": " + received[i].message);
+                }
+            });
         }, function(res){
             alert(res.data.error);
             toggleLoginFromChatPanel();
